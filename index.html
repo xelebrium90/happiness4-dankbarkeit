@@ -289,62 +289,39 @@
 
   // ── Data ─────────────────────────────────────────────────────────────
   const impulses = [
-    { type: 'category', text: "Wahrnehmung und Fokus" },
+    { type: 'category', text: "1. Wahrnehmung und Fokus" },
     {
       type: 'impulse',
       text: "Worauf du deine Aufmerksamkeit richtest, bestimmt dein Lebensgefühl.",
-      question: "Worauf richtet sich dein Fokus im Alltag – Probleme oder Möglichkeiten?",
-      question: "Warum vergessen Menschen so schnell, was gut läuft?"
+      question: "Worauf richtet sich dein Fokus im Alltag – Probleme oder Möglichkeiten? Warum vergessen Menschen so schnell, was gut läuft?"
     },
+    { type: 'category', text: "2. Genug haben & Vergleiche" },
     {
       type: 'impulse',
-      text: "Zufriedenheit in einer Welt des Mehr\u2013Glück beginnt oft dort, wo Vergleiche enden.",
+      text: "Zufriedenheit in einer Welt des Mehr. Glück beginnt oft dort, wo Vergleiche enden.",
       question: "Wann hattest du alles Nötige – ohne es in dem Moment zu merken? Welche Vergleiche rauben Menschen (heutzutage) Lebensfreude?"
     },
 
-    { type: 'category', text: "🔍 Was Liebe wirklich zeigt" },
+    { type: 'category', text: "3. Glück & innere Fülle" },
     {
       type: 'impulse',
-      text: "Glück beginnt oft dort, wo Vergleiche enden.",
-      question: "Welche Vergleiche rauben Menschen (heutzutage) Lebensfreude?"
+      text: "Glück ist oft weniger Besitz als innere Haltung.",
+      question: "Kennst du Menschen mit wenig Besitz, aber viel Lebensfreunde? Kann man Dankbarkeit trainieren oder ist es Persönlichkeit?"
     },
+    { type: 'category', text: "4. Krisen & Wachstum" },
     {
       type: 'impulse',
-      text: "\u201EDie meisten Beziehungen scheitern nicht an fehlender Liebe, sondern an fehlender Kompetenz.\u201D Was fehlt? Kommunikation, Konfliktl\u00F6sung, Empathie, Selbstregulation.",
-      question: "Welche Fähigkeit – Kommunikation, Konfliktlösung, Empathie oder Selbstregulation – fehlt dir am meisten in Beziehungen?"
-    },
-
-    { type: 'category', text: "🧩 Was wir wirklich suchen" },
-    {
-      type: 'impulse',
-      text: "\u201EWir suchen in anderen, was wir in uns selbst nicht gel\u00F6st haben.\u201D Unsicherheit \u2192 Best\u00E4tigung. Chaos \u2192 Stabilit\u00E4t. Einsamkeit \u2192 Rettung.",
-      question: "Was hast du zuletzt in einer Beziehung gesucht – Bestätigung, Stabilität oder Rettung? Was sagt das über dich aus?"
-    },
-    {
-      type: 'impulse',
-      text: "\u201EN\u00E4he ist das Sch\u00F6nste \u2013 und das Gef\u00E4hrlichste zugleich.\u201D Je n\u00E4her dir jemand ist, desto gr\u00F6\u00DFer der Einfluss \u2013 positiv wie negativ.",
-      question: "Wie nah lässt du andere wirklich an dich heran – und wo ziehst du die Grenze? Aus welchem Grund?"
+      text: "Dankbarkeit verdrängt Leid nicht – sie verändert den Umgang damit.",
+      question: "Welche Krise hat dich im Rückblick stärker gemacht? Kann man trotz Problemen dankbar sein?"
     },
 
-    { type: 'category', text: "📊 Was die Wissenschaft sagt" },
+    { type: 'category', text: "5. Alltagsfreude" },
     {
       type: 'impulse',
-      text: "Harvard-Studie (75 Jahre, 724 Menschen): Soziale Verbindungen tun uns gut – Einsamkeit tötet. Menschen, die sozial stärker eingebunden sind, sind glücklicher, körperlich gesünder und leben länger.",
-      question: "Wie stark sind deine sozialen Verbindungen heute – und wann hast du zuletzt bewusst in eine Beziehung investiert?"
+      text: "Oft steckt Glück in Begegnungen und kleinen Momenten.",
+      question: "Warum wirken manche Menschen angenehm und positiv – unabhängig vom Status? Welche kleinen Momente machen deinen Alltag schöner?"
     },
-    {
-      type: 'impulse',
-      text: "Es geht nicht um die Anzahl deiner Beziehungen, sondern um ihre Qualität. Beziehungen mit vielen Konflikten sind oft schlimmer als Einsamkeit. Gute, warme Beziehungen schützen Körper und Gehirn.",
-      question: "Welche deiner Beziehungen gibt dir Energie – und welche zieht sie ab? Was tust du damit?"
-    },
-
-    { type: 'category', text: "🌟 Ein gutes Leben" },
-    {
-      type: 'impulse',
-      text: "\u201EDas Leben ist zu kurz f\u00FCr Streit, Entschuldigungen, Bitterkeit und Rechtfertigungen. Es bleibt nur Zeit zu lieben \u2013 und selbst daf\u00FCr, so scheint es, nur ein Augenblick.\u201D (Mark Twain) \u2013 Ein gutes Leben entsteht durch gute Beziehungen.",
-      question: "Was müsstest du heute verändern, um die wichtigsten Beziehungen in deinem Leben zu vertiefen?"
-    }
-  ];
+   ];
 
   // ── Persistenz ────────────────────────────────────────────────────────
   const progressKey = 'dankbarkeit-impulse-index';
