@@ -272,13 +272,13 @@
     }
 
     if (localStorage.getItem(authOkKey) !== "1") {
-      const userPassword = prompt("Bitte geben Sie das Passwort ein, um fortzufahren:");
+      const userPassword = prompt("Bitte gebe das Passwort ein, um fortzufahren:");
 
       if (userPassword === requiredPassword) {
         localStorage.setItem(authOkKey, "1");
         alert("Willkommen!");
       } else {
-        alert("Falsches Passwort. Sie haben keinen Zugriff auf diese Seite.");
+        alert("Falsches Passwort. Du hast keinen Zugriff auf diese Seite.");
         document.body.innerHTML = "";
         return;
       }
@@ -293,12 +293,12 @@
     {
       type: 'impulse',
       text: "Worauf du deine Aufmerksamkeit richtest, bestimmt dein Lebensgefühl.",
-      question: "Worauf richtet sich dein Fokus im Alltag – Probleme oder Möglichkeiten?\u2013Warum vergessen Menschen so schnell, was gut läuft?"
+      question: "Worauf richtet sich dein Fokus im Alltag – Probleme oder Möglichkeiten? Warum vergessen Menschen so schnell, was gut läuft?"
     },
     {
       type: 'impulse',
       text: "Zufriedenheit in einer Welt des Mehr\u2013Glück beginnt oft dort, wo Vergleiche enden.",
-      question: "Wann hattest du alles Nötige – ohne es in dem Moment zu merken?\u2013Welche Vergleiche rauben Menschen (heutzutage) Lebensfreude?"
+      question: "Wann hattest du alles Nötige – ohne es in dem Moment zu merken? Welche Vergleiche rauben Menschen (heutzutage) Lebensfreude?"
     },
 
     { type: 'category', text: "🔍 Was Liebe wirklich zeigt" },
