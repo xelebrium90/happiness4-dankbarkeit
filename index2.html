@@ -368,6 +368,14 @@
     box-shadow: 0 4px 14px rgba(31,45,61,0.10);
   }
 
+  #exitExerciseBtn {
+    display: none;
+    margin: 0 auto 20px;
+    position: sticky;
+    top: 14px;
+    z-index: 10;
+  }
+
   #resetBtn:hover:not(:disabled),
   #exitExerciseBtn:hover:not(:disabled) {
     background: #f3f8ff;
@@ -398,6 +406,8 @@
 </header>
 
 <div id="content"></div>
+
+<button id="exitExerciseBtn" type="button">Übung verlassen</button>
 
 <div id="exerciseContent" aria-live="polite">
   <div class="exercise-intro">
@@ -557,7 +567,135 @@
         <div class="exercise-number">6</div>
         <div>
           <h4 class="exercise-title">Morgendlicher Dankbarkeitsstart</h4>
-          <p class="exe
+          <p class="exercise-task">Den Tag bewusst positiv beginnen.</p>
+        </div>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Fragen</span>
+        <ul>
+          <li>Worauf freue ich mich heute?</li>
+          <li>Was ist bereits gut?</li>
+        </ul>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Beispiele</span>
+        <div class="exercise-examples">
+          <span class="example-pill">heute frei haben</span>
+          <span class="example-pill">Freunde treffen</span>
+          <span class="example-pill">gesund sein</span>
+          <span class="example-pill">neue Chancen</span>
+        </div>
+      </div>
+      <div class="effect-box"><strong>Wirkung:</strong> Besserer mentaler Start.</div>
+    </section>
+
+    <section class="exercise-card">
+      <div class="exercise-card-header">
+        <div class="exercise-number">7</div>
+        <div>
+          <h4 class="exercise-title">Abendlicher Tagesrückblick</h4>
+          <p class="exercise-task">Den Tag positiv abschließen.</p>
+        </div>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Fragen</span>
+        <ul>
+          <li>Was lief gut?</li>
+          <li>Was war schön?</li>
+        </ul>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Beispiele</span>
+        <div class="exercise-examples">
+          <span class="example-pill">gutes Gespräch</span>
+          <span class="example-pill">lecker gegessen</span>
+          <span class="example-pill">Training geschafft</span>
+          <span class="example-pill">Sonne genossen</span>
+          <span class="example-pill">Aufgabe erledigt</span>
+        </div>
+      </div>
+      <div class="effect-box"><strong>Wirkung:</strong> Mehr Ruhe vor dem Schlafen.</div>
+    </section>
+
+    <section class="exercise-card">
+      <div class="exercise-card-header">
+        <div class="exercise-number">8</div>
+        <div>
+          <h4 class="exercise-title">Dankbarkeit für sich selbst</h4>
+          <p class="exercise-task">Eigene Leistung anerkennen und sich selbst fair begegnen.</p>
+        </div>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Fragen</span>
+        <ul>
+          <li>Was habe ich gut gemacht?</li>
+          <li>Worauf bin ich stolz?</li>
+        </ul>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Beispiele</span>
+        <div class="exercise-examples">
+          <span class="example-pill">Sport gemacht</span>
+          <span class="example-pill">ruhig im Stress geblieben</span>
+          <span class="example-pill">jemandem geholfen</span>
+          <span class="example-pill">trotz Schwierigkeiten durchgezogen</span>
+        </div>
+      </div>
+      <div class="effect-box"><strong>Wirkung:</strong> Gesunder Selbstwert.</div>
+    </section>
+
+    <section class="exercise-card">
+      <div class="exercise-card-header">
+        <div class="exercise-number">9</div>
+        <div>
+          <h4 class="exercise-title">Fülle statt Mangel denken</h4>
+          <p class="exercise-task">Mangelgedanken bewusst wahrnehmen und ersetzen.</p>
+        </div>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Fragen</span>
+        <ul>
+          <li>Was ist bereits vorhanden?</li>
+          <li>Welche Chancen habe ich?</li>
+        </ul>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Beispiele</span>
+        <div class="reframe-box"><strong>Statt:</strong> „Ich habe zu wenig Zeit.“<br><strong>Denken:</strong> „Ich habe heute 2 freie Stunden sinnvoll nutzbar.“</div>
+        <div class="reframe-box"><strong>Statt:</strong> „Ich habe kein Glück.“<br><strong>Denken:</strong> „Ich habe Erfahrung, Gesundheit und Möglichkeiten.“</div>
+      </div>
+      <div class="effect-box"><strong>Wirkung:</strong> Mehr Energie statt Blockade.</div>
+    </section>
+
+    <section class="exercise-card">
+      <div class="exercise-card-header">
+        <div class="exercise-number">10</div>
+        <div>
+          <h4 class="exercise-title">Dankbarkeit als Lebenshaltung</h4>
+          <p class="exercise-task">Im Alltag bewusst genießen und den Moment wahrnehmen.</p>
+        </div>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Fragen</span>
+        <ul>
+          <li>Was ist an diesem Moment gut genug?</li>
+          <li>Was darf ich jetzt bewusst erleben?</li>
+        </ul>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Beispiele</span>
+        <div class="exercise-examples">
+          <span class="example-pill">warmer Kaffee am Morgen</span>
+          <span class="example-pill">Lachen mit Freunden</span>
+          <span class="example-pill">Spaziergang im Frühling</span>
+          <span class="example-pill">Musik im Auto</span>
+          <span class="example-pill">Ruhe am Abend</span>
+        </div>
+      </div>
+      <div class="effect-box"><strong>Wirkung:</strong> Mehr Happiness im Alltag.</div>
+    </section>
+  </div>
+</div>
 
 <div id="timer-area">
   <div class="timer-label">Nächster Impuls in</div>
@@ -574,7 +712,6 @@
 
 <button id="nextBtn">Nächster Impuls</button>
 <button id="exerciseBtn" type="button">Übungen</button>
-<button id="exitExerciseBtn" type="button" style="display: none;">Übung verlassen</button>
 <button id="resetBtn" type="button">Von vorne anfangen</button>
 <div id="status"></div>
 
