@@ -414,9 +414,171 @@
     font-size: 0.85rem;
     color: #7a9ab8;
   }
+
+  /* ── Schönes Begrüßungs-/Passwort-Popup ── */
+  .auth-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+    background: rgba(31,45,61,0.34);
+    backdrop-filter: blur(10px);
+  }
+
+  .auth-overlay.active {
+    display: flex;
+  }
+
+  .auth-card {
+    width: 100%;
+    max-width: 430px;
+    background: linear-gradient(145deg, #ffffff 0%, #f3f8ff 100%);
+    border-radius: 24px;
+    padding: 34px 28px 28px;
+    box-shadow: 0 18px 60px rgba(31,45,61,0.28);
+    border: 1px solid rgba(255,255,255,0.7);
+    text-align: center;
+    animation: authFadeIn 0.45s ease both;
+  }
+
+  .auth-icon {
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #eaf4ff;
+    box-shadow: inset 0 0 0 1px rgba(74,144,217,0.16);
+    font-size: 1.75rem;
+  }
+
+  .auth-kicker {
+    margin-bottom: 6px;
+    color: #6a8aaa;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+  }
+
+  .auth-card h3 {
+    margin-bottom: 10px;
+    color: var(--primary);
+    font-size: 1.42rem;
+    letter-spacing: -0.3px;
+  }
+
+  .auth-text {
+    color: #5f7f9e;
+    line-height: 1.55;
+    font-size: 1rem;
+    margin-bottom: 22px;
+  }
+
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #authInput {
+    width: 100%;
+    border: 1px solid rgba(31,45,61,0.15);
+    background: #ffffff;
+    color: var(--primary);
+    border-radius: 999px;
+    padding: 14px 18px;
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+    box-shadow: 0 4px 14px rgba(31,45,61,0.08);
+  }
+
+  #authInput:focus {
+    border-color: rgba(74,144,217,0.65);
+    box-shadow: 0 0 0 4px rgba(74,144,217,0.14);
+  }
+
+  #authSubmit {
+    width: 100%;
+    border: none;
+    border-radius: 999px;
+    padding: 14px 18px;
+    background: var(--primary);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(31,45,61,0.22);
+    transition: background 0.25s, transform 0.1s;
+  }
+
+  #authSubmit:hover {
+    background: #2d4a6e;
+    transform: translateY(-1px);
+  }
+
+  .auth-error {
+    min-height: 20px;
+    margin-top: 12px;
+    color: #b24040;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .welcome-toast {
+    position: fixed;
+    left: 50%;
+    top: 18px;
+    z-index: 998;
+    max-width: calc(100% - 32px);
+    transform: translate(-50%, -120%);
+    background: var(--primary);
+    color: #ffffff;
+    border-radius: 999px;
+    padding: 12px 20px;
+    box-shadow: 0 10px 34px rgba(31,45,61,0.25);
+    font-size: 0.95rem;
+    font-weight: 600;
+    opacity: 0;
+    transition: transform 0.45s ease, opacity 0.45s ease;
+  }
+
+  .welcome-toast.show {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+
+  @keyframes authFadeIn {
+    from { opacity: 0; transform: translateY(14px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
 </style>
 </head>
 <body>
+
+<div id="authOverlay" class="auth-overlay" aria-modal="true" role="dialog">
+  <div class="auth-card">
+    <div class="auth-icon">☀️</div>
+    <p class="auth-kicker">Happiness Talk</p>
+    <h3>Willkommen zur Dankbarkeitsrunde</h3>
+    <p class="auth-text">Schön, dass du dabei bist. Bitte gib kurz das Tagespasswort ein, um die Impulse zu öffnen.</p>
+
+    <form id="authForm" class="auth-form">
+      <input id="authInput" type="password" placeholder="Passwort eingeben" autocomplete="current-password" aria-label="Passwort eingeben">
+      <button id="authSubmit" type="submit">Impulsrunde öffnen</button>
+    </form>
+
+    <div id="authError" class="auth-error" aria-live="polite"></div>
+  </div>
+</div>
+
+<div id="welcomeToast" class="welcome-toast" aria-live="polite">Danke, dass du diese Veranstaltung mit uns teilst! :-)</div>
 
 <header>
   <h1>Let's Talk About - Happiness</h1>
@@ -747,29 +909,50 @@
     return `${y}-${m}-${day}`;
   }
 
-  (function enforceDailyPassword() {
+  function showWelcomeToast(text = "Danke, dass du diese Veranstaltung mit uns teilst! :-)") {
+    const toast = document.getElementById("welcomeToast");
+    toast.textContent = text;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 3200);
+  }
+
+  function setupDailyPassword() {
     const today = todayLocalYYYYMMDD();
+    const overlay = document.getElementById("authOverlay");
+    const form = document.getElementById("authForm");
+    const input = document.getElementById("authInput");
+    const error = document.getElementById("authError");
 
     if (localStorage.getItem(authDayKey) !== today) {
       localStorage.setItem(authDayKey, today);
       localStorage.removeItem(authOkKey);
     }
 
-    if (localStorage.getItem(authOkKey) !== "1") {
-      const userPassword = prompt("Bitte gebe das Passwort ein, um fortzufahren:");
-
-      if (userPassword === requiredPassword) {
-        localStorage.setItem(authOkKey, "1");
-        alert("Willkommen!");
-      } else {
-        alert("Falsches Passwort. Du hast keinen Zugriff auf diese Seite.");
-        document.body.innerHTML = "";
-        return;
-      }
-    } else {
-      alert("Danke, dass du diese Veranstaltung mit uns teilst! :-)");
+    if (localStorage.getItem(authOkKey) === "1") {
+      showWelcomeToast();
+      return;
     }
-  })();
+
+    overlay.classList.add("active");
+    setTimeout(() => input.focus(), 150);
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      if (input.value.trim() === requiredPassword) {
+        localStorage.setItem(authOkKey, "1");
+        error.textContent = "";
+        overlay.classList.remove("active");
+        showWelcomeToast("Willkommen! Schön, dass du dabei bist.");
+      } else {
+        error.textContent = "Das Passwort stimmt leider nicht. Bitte versuche es erneut.";
+        input.value = "";
+        input.focus();
+      }
+    });
+  }
+
+  setupDailyPassword();
 
   // ── Data ─────────────────────────────────────────────────────────────
   const impulses = [
