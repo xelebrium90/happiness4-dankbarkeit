@@ -70,17 +70,35 @@
   }
 
   .impulse-question {
-    margin-top: 10px;
-    padding-top: 10px;
+    margin-top: 14px;
+    padding-top: 12px;
     border-top: 1px solid rgba(31,45,61,0.10);
-    font-size: 1.08rem;
-    line-height: 1.55;
-    color: #5f7f9e;
   }
 
-  .impulse-question strong {
-    color: #3f5f80;
+  .question-label {
+    display: inline-block;
+    font-size: 0.78rem;
     font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #3f5f80;
+    margin-bottom: 8px;
+  }
+
+  .question-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .question-item {
+    background: #f3f8ff;
+    color: #3f5f80;
+    border: 1px solid rgba(74,144,217,0.18);
+    border-radius: 12px;
+    padding: 11px 13px;
+    font-size: 1.05rem;
+    line-height: 1.5;
   }
 
   .category-header {
@@ -879,6 +897,33 @@
     counterEl.textContent = `Angezeigt: ${shown} | Verbleibend: ${remaining} (Gesamt: ${totalImpulses})`;
   }
 
+  function escapeHTML(text) {
+    return text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  function formatQuestions(questionText) {
+    const questions = questionText
+      .match(/[^?!]+[?!]+|[^?!]+$/g)
+      ?.map(q => q.trim())
+      .filter(Boolean) || [];
+
+    if (!questions.length) return "";
+
+    return `
+      <div class="impulse-question">
+        <span class="question-label">${questions.length > 1 ? "Fragen" : "Frage"}</span>
+        <div class="question-list">
+          ${questions.map(q => `<div class="question-item">${escapeHTML(q)}</div>`).join("")}
+        </div>
+      </div>
+    `;
+  }
+
   function updateExerciseButtonVisibility() {
     if (index >= impulses.length) {
       exerciseBtn.classList.add("visible");
@@ -916,7 +961,7 @@
         const q = (item.question || "").replace(/^Frage:\s*/i, "");
         el.innerHTML = `
           <div class="impulse-text">${item.text}</div>
-          ${q ? `<div class="impulse-question"><strong>Frage:</strong> ${q}</div>` : ''}
+          ${q ? formatQuestions(q) : ''}
         `;
       }
       contentDiv.appendChild(el);
@@ -952,7 +997,7 @@
       const q = (item.question || "").replace(/^Frage:\s*/i, "");
       el.innerHTML = `
         <div class="impulse-text">${item.text}</div>
-        ${q ? `<div class="impulse-question"><strong>Frage:</strong> ${q}</div>` : ''}
+        ${q ? formatQuestions(q) : ''}
       `;
     }
 
