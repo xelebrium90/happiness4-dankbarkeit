@@ -829,7 +829,7 @@
     contentDiv.innerHTML = "";
     statusEl.textContent = "";
     btn.disabled = false;
-    btn.textContent = "Nächster Impuls";
+    btn.textContent = getNextButtonLabel();
     btn.classList.remove("ready");
     exerciseBtn.classList.remove("visible");
 
@@ -885,6 +885,22 @@
     } else {
       exerciseBtn.classList.remove("visible");
     }
+  }
+
+  function getRemainingImpulsesCount() {
+    let count = 0;
+    for (let i = index; i < impulses.length; i++) {
+      if (impulses[i].type === 'impulse') count++;
+    }
+    return count;
+  }
+
+  function getNextButtonLabel() {
+    const remainingImpulses = getRemainingImpulsesCount();
+
+    if (remainingImpulses === totalImpulses) return "Erster Impuls";
+    if (remainingImpulses === 1) return "Letzter Impuls";
+    return "Nächster Impuls";
   }
 
   function renderProgress() {
@@ -967,6 +983,7 @@
         timerArea.classList.remove('active');
         if (index < impulses.length) {
           btn.disabled = false;
+          btn.textContent = getNextButtonLabel();
           btn.classList.add('ready');
         } else {
           statusEl.textContent = "✓ Alle Impulse wurden angezeigt.";
@@ -1023,6 +1040,7 @@
       setTimeout(showNext, 500);
     } else {
       if (index < impulses.length) {
+        btn.textContent = getNextButtonLabel();
         startTimer();
       } else {
         btn.disabled = true;
