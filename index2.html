@@ -106,30 +106,150 @@
   /* ── Übungen ── */
   #exerciseContent {
     display: none;
-    max-width: 640px;
+    max-width: 760px;
     margin: 0 auto 28px;
-    background: var(--card);
-    border-radius: var(--radius);
-    padding: 28px 26px;
-    box-shadow: var(--shadow);
     text-align: left;
-    line-height: 1.65;
-    border-left: 4px solid var(--accent);
   }
 
   #exerciseContent.active {
     display: block;
   }
 
-  #exerciseContent h3 {
-    font-size: 1.35rem;
-    margin-bottom: 12px;
-    color: var(--primary);
+  .exercise-intro {
+    background: var(--primary);
+    color: #ffffff;
+    border-radius: var(--radius);
+    padding: 22px 26px;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+    text-align: center;
   }
 
-  #exerciseText {
+  .exercise-intro h3 {
+    font-size: 1.45rem;
+    margin-bottom: 8px;
+    letter-spacing: -0.2px;
+  }
+
+  .exercise-intro p {
+    color: rgba(255,255,255,0.82);
+    line-height: 1.55;
+    font-size: 1rem;
+  }
+
+  .exercise-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .exercise-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 22px 26px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--accent);
+    line-height: 1.6;
+  }
+
+  .exercise-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .exercise-number {
+    flex: 0 0 auto;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(74,144,217,0.25);
+  }
+
+  .exercise-title {
+    font-size: 1.18rem;
+    color: var(--primary);
+    margin-bottom: 3px;
+    letter-spacing: -0.2px;
+  }
+
+  .exercise-task {
+    color: #5f7f9e;
+    font-size: 1rem;
+  }
+
+  .exercise-section {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(31,45,61,0.10);
+  }
+
+  .exercise-label {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #3f5f80;
-    font-size: 1.05rem;
+    margin-bottom: 7px;
+  }
+
+  .exercise-card ul {
+    margin-left: 18px;
+    color: #3f5f80;
+  }
+
+  .exercise-card li {
+    margin: 3px 0;
+  }
+
+  .exercise-examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 2px;
+  }
+
+  .example-pill {
+    background: #f3f8ff;
+    color: #3f5f80;
+    border: 1px solid rgba(74,144,217,0.18);
+    border-radius: 999px;
+    padding: 6px 11px;
+    font-size: 0.92rem;
+  }
+
+  .reframe-box {
+    background: #f3f8ff;
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: #3f5f80;
+    margin-top: 8px;
+  }
+
+  .reframe-box + .reframe-box {
+    margin-top: 8px;
+  }
+
+  .effect-box {
+    margin-top: 16px;
+    background: linear-gradient(145deg, #eef7ff 0%, #ffffff 100%);
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: #3f5f80;
+    font-weight: 600;
+    border: 1px solid rgba(74,144,217,0.18);
+  }
+
+  .effect-box strong {
+    color: var(--primary);
   }
 
   /* ── Timer ── */
@@ -280,11 +400,164 @@
 <div id="content"></div>
 
 <div id="exerciseContent" aria-live="polite">
-  <h3>Übungen</h3>
-  <div id="exerciseText">
-    <!-- Hier kannst du später den Übungstext einfügen. -->
+  <div class="exercise-intro">
+    <h3>Übungen zur Dankbarkeit</h3>
+    <p>10 kurze Praxisimpulse, um Dankbarkeit nicht nur zu besprechen, sondern konkret im Alltag zu erleben.</p>
   </div>
-</div>
+
+  <div class="exercise-list">
+    <section class="exercise-card">
+      <div class="exercise-card-header">
+        <div class="exercise-number">1</div>
+        <div>
+          <h4 class="exercise-title">Die tägliche Dankbarkeitsliste</h4>
+          <p class="exercise-task">Jeden Tag 3–10 Dinge notieren, für die du dankbar bist.</p>
+        </div>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Fragen</span>
+        <ul>
+          <li>Wofür bin ich heute dankbar?</li>
+          <li>Was war heute schön?</li>
+          <li>Was funktioniert bereits gut?</li>
+        </ul>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Beispiele</span>
+        <div class="exercise-examples">
+          <span class="example-pill">gesund aufgewacht</span>
+          <span class="example-pill">Kaffee genossen</span>
+          <span class="example-pill">Freund hat sich gemeldet</span>
+          <span class="example-pill">arbeiten können</span>
+          <span class="example-pill">angenehmes Wetter</span>
+        </div>
+      </div>
+      <div class="effect-box"><strong>Wirkung:</strong> Trainiert den Blick für Positives.</div>
+    </section>
+
+    <section class="exercise-card">
+      <div class="exercise-card-header">
+        <div class="exercise-number">2</div>
+        <div>
+          <h4 class="exercise-title">Dankbarkeit für Selbstverständlichkeiten</h4>
+          <p class="exercise-task">Wertschätzen, was im Alltag oft übersehen wird.</p>
+        </div>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Fragen</span>
+        <ul>
+          <li>Was halte ich für selbstverständlich?</li>
+          <li>Was würde mir fehlen, wenn es morgen weg wäre?</li>
+        </ul>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Beispiele</span>
+        <div class="exercise-examples">
+          <span class="example-pill">fließendes Wasser</span>
+          <span class="example-pill">Strom / Internet</span>
+          <span class="example-pill">schmerzfrei gehen</span>
+          <span class="example-pill">warmes Bett</span>
+          <span class="example-pill">Supermarkt um die Ecke</span>
+          <span class="example-pill">funktionierendes Auto</span>
+        </div>
+      </div>
+      <div class="effect-box"><strong>Wirkung:</strong> Mehr Demut, weniger Gewöhnung.</div>
+    </section>
+
+    <section class="exercise-card">
+      <div class="exercise-card-header">
+        <div class="exercise-number">3</div>
+        <div>
+          <h4 class="exercise-title">Rückblick auf bereits Erreichtes</h4>
+          <p class="exercise-task">Erkennen, was früher einmal ein Wunsch war.</p>
+        </div>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Fragen</span>
+        <ul>
+          <li>Was wollte ich vor Jahren unbedingt?</li>
+          <li>Was habe ich heute, das ich kaum noch beachte?</li>
+        </ul>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Beispiele</span>
+        <div class="exercise-examples">
+          <span class="example-pill">eigene Wohnung</span>
+          <span class="example-pill">Führerschein / Auto</span>
+          <span class="example-pill">finanzielle Stabilität</span>
+          <span class="example-pill">reisen können</span>
+          <span class="example-pill">mehr Selbstbewusstsein</span>
+          <span class="example-pill">neue Fähigkeiten</span>
+        </div>
+      </div>
+      <div class="effect-box"><strong>Wirkung:</strong> Mehr Zufriedenheit statt Dauerjagd.</div>
+    </section>
+
+    <section class="exercise-card">
+      <div class="exercise-card-header">
+        <div class="exercise-number">4</div>
+        <div>
+          <h4 class="exercise-title">Dankbarkeit in schwierigen Situationen</h4>
+          <p class="exercise-task">Nach Wachstum, Lernen und Stärke in Problemen suchen.</p>
+        </div>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Fragen</span>
+        <ul>
+          <li>Was lerne ich daraus?</li>
+          <li>Welche Stärke entsteht hier?</li>
+        </ul>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Beispiele</span>
+        <div class="exercise-examples">
+          <span class="example-pill">Trennung → klarere Standards</span>
+          <span class="example-pill">Jobverlust → Neuanfang</span>
+          <span class="example-pill">Krankheit → Gesundheit schätzen</span>
+          <span class="example-pill">Konflikt → Grenzen setzen</span>
+        </div>
+      </div>
+      <div class="effect-box"><strong>Wirkung:</strong> Krisen werden sinnvoller verarbeitet.</div>
+    </section>
+
+    <section class="exercise-card">
+      <div class="exercise-card-header">
+        <div class="exercise-number">5</div>
+        <div>
+          <h4 class="exercise-title">Dankbarkeit gegenüber Menschen ausdrücken</h4>
+          <p class="exercise-task">Bewusst Danke sagen und Wertschätzung aussprechen.</p>
+        </div>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Fragen</span>
+        <ul>
+          <li>Wem verdanke ich viel?</li>
+          <li>Wem habe ich lange nicht gedankt?</li>
+        </ul>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Beispiele</span>
+        <div class="exercise-examples">
+          <span class="example-pill">Eltern für Unterstützung</span>
+          <span class="example-pill">Freund fürs Zuhören</span>
+          <span class="example-pill">Kollege für Hilfe</span>
+          <span class="example-pill">Lehrer für Motivation</span>
+          <span class="example-pill">Partner für Geduld</span>
+        </div>
+      </div>
+      <div class="exercise-section">
+        <span class="exercise-label">Praxis</span>
+        <div class="reframe-box">Kurze Nachricht: „Danke, dass du damals für mich da warst.“</div>
+      </div>
+      <div class="effect-box"><strong>Wirkung:</strong> Nähe und Verbindung wachsen.</div>
+    </section>
+
+    <section class="exercise-card">
+      <div class="exercise-card-header">
+        <div class="exercise-number">6</div>
+        <div>
+          <h4 class="exercise-title">Morgendlicher Dankbarkeitsstart</h4>
+          <p class="exe
 
 <div id="timer-area">
   <div class="timer-label">Nächster Impuls in</div>
